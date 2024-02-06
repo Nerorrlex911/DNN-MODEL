@@ -36,7 +36,7 @@ print("Training set data size:", len(train_loader)*batch_size, ",Validating set 
 if __name__ == '__main__':
     model = Neuralnetwork(1024, 512, 256, 128, 1).to(device)
     criterion = nn.MSELoss()
-    optimizer = torch.optim.Adam(model.parameters(), lr=lr)
+    optimizer = torch.optim.SGD(model.parameters(), lr=lr, momentum=0.9,nesterov=True)
     for epoch in range(epochs):
         model.train()
         for data in train_loader:
